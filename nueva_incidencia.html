@@ -27,6 +27,52 @@
                 </div>
             </aside>
             <div class="content">
+                <header class="header">
+                    <h1>Nueva Incidencia</h1>
+                </header>
+                <main class="main-content">
+                    <form class="form-nueva-incidencia">
+                        <label for="ticket">ID Incidencia:</label>
+                        <input type="text" id="ticket" value="INC-001" readonly>
+
+                        <label for="descripcion">Descripcion:</label>
+                        <textarea id="descripcion" name="descripcion" required></textarea>
+
+                        <label for="prioridad">Prioridad:</label>
+                        <select id="prioridad" name="prioridad" required>
+                            <option value="baja">Baja</option>
+                            <option value="media">Media</option>
+                            <option value="alta">Alta</option>
+                        </select>
+                        <label for="estado">Estado:</label>
+                        <select id="estado" name="estado" required>
+                            <option value="abierta">Abierta</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="en_progreso">En Progreso</option>
+                            <option value="completada">Completada</option>
+                        </select>
+
+                        <label for="tecnico">Tecnico:</label>
+                        <select id="tecnico" name="tecnico" required>
+                            <option value="">Seleccionar Tecnico</option>
+                            <option value="1">Juan Pérez</option>
+                            <option value="2">María López</option>
+                            <option value="3">Carlos García</option>
+                        </select>
+
+                        <label for="equipo">Equipo (Nº de serie):</label>
+                        <input list="lista-equipos" id="equipo" name="equipo" required placeholder="Ej: CC51054">
+                        <datalist id="lista-equipos">
+                            <option value="CC51054 - Laser CO2">
+                            <option value="CE54354 - Diodo Blue">
+                            <option value="CF51154 - Dermalase">
+                            <option value="CH62120 - HIFU Pro">
+                            <option value="CJ77412 - IPL Advanced">
+                        </datalist>
+
+                        <button type="submit">Crear Incidencia</button>
+                    </form>
+                </main>
             </div>
         </div>
     </body>
