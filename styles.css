@@ -160,4 +160,58 @@ html, body {
     border-bottom: 1px solid #ddd;
 }
 
+/* Estilos para nueva incidencia y mantenimiento */
+.formulario {
+    background: white;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+}
 
+.formulario label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+    color: #2c3e50;
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.95em;
+    box-sizing: border-box;
+}
+
+.formulario textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.formulario button {
+    margin-top: 10px;
+    align-self: flex-start;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.formulario button:hover {
+    background-color: #2980b9;
+}
+
+.sidebar-footer a {
+    color: #3498db;
+    text-decoration: none;
+}
