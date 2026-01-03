@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nuevo Mantenimiento</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="app">
+            <aside class="sidebar">
+                <div class="logo-empresa">
+                    <img class="logo-imagen" src="resources/logo.png" alt="Logo de la Empresa">
+                </div>
+                <nav class="lista-paginas">
+                    <ul>
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="incidencias.html">Incidencias</a></li>
+                        <li><a href="mantenimientos.html">Mantenimientos</a></li>
+                        <li><a href="equipos.html">Equipos</a></li>
+                        <li><a href="tecnicos.html">Tecnicos</a></li>
+                    </ul>
+                </nav>
+                <div class="sidebar-footer">
+                    <h4>Soporte: +34 600 000 000</h4>
+                    <p>Ultima sincronizacion: 04/12/2025</p>
+                </div>
+            </aside>
+            <div class="content">
+                <header class="header">
+                    <h1>Nuevo Mantenimiento</h1>
+                </header>
+                <main class="main-content">
+                    <form class="formulario" action="#" method="post">
+                        <label for="mantenimiento-id">ID Mantenimiento:</label>
+                        <input type="text" id="mantenimiento-id" value="MNT-001" readonly>
+
+                        <label for="equipo">Equipo (Nº de serie):</label>
+                        <input list="lista-equipos" id="equipo" name="equipo" required placeholder="Ej: CC51054">
+                        <datalist id="lista-equipos">
+                            <option value="CC51054 - Laser CO2">
+                            <option value="CE54354 - Diodo Blue">
+                            <option value="CF51154 - Dermalase">
+                            <option value="CH62120 - HIFU Pro">
+                            <option value="CJ77412 - IPL Advanced">
+                        </datalist>
+
+                        <label for="cliente">Cliente</label>
+                        <input type="text" id="cliente" value="Clínica Estética Aurora" readonly>
+
+                        <label for="descripcion">Descripcion:</label>
+                        <textarea id="descripcion" name="descripcion" required></textarea>
+
+                        <label for="fecha-mantenimiento">Fecha de Mantenimiento:</label>
+                        <input type="date" id="fecha-mantenimiento" name="fecha-mantenimiento" required>
+
+
+
+
+                        <label for="tecnico">Tecnico:</label>
+                        <select id="tecnico" name="tecnico" required>
+                            <option value="">Seleccionar Tecnico</option>
+                            <option value="1">Juan Pérez</option>
+                            <option value="2">María López</option>
+                            <option value="3">Carlos García</option>
+                        </select>
+
+
+
+                        <button type="submit">Crear Mantenimiento</button>
+                    </form>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
