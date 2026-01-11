@@ -57,7 +57,8 @@ Simula un sistema de gestión de incidencias y mantenimientos para un servicio t
 
 ## 📌 Estado del proyecto
 
-Proyecto finalizado para entrega académica.
+⚠️ El desarrollo activo ocurre en la rama `develop`.
+La rama `main` contiene versiones estables.
 
 ## 👤 Autor
 
