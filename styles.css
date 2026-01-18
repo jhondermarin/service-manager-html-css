@@ -215,3 +215,51 @@ html, body {
     color: #3498db;
     text-decoration: none;
 }
+
+.dform .btn-general {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+}
+.dform .btn-general:hover {
+    background-color: #2980b9;
+}
+
+.dform textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.95em;
+    box-sizing: border-box;
+    min-height: 100px;
+    resize: vertical;
+}
+
+.lista-archivos li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.panel-filtros {
+    background: #f4f6f8;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.panel-filtros.hidden {
+    display: none;
+}
+
+.filtros-form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
