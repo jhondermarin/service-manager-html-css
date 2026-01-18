@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nuevo Equipo - Service Manager</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="app">
+            <aside class="sidebar">
+                <div class="logo-empresa">
+                    <img class="logo-imagen" src="resources/logo.png" alt="Logo de la Empresa">
+                </div>
+                <nav class="lista-paginas">
+                    <ul>
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="incidencias.html">Incidencias</a></li>
+                        <li><a href="mantenimientos.html">Mantenimientos</a></li>
+                        <li><a href="equipos.html">Equipos</a></li>
+                        <li><a href="tecnicos.html">Tecnicos</a></li>
+                        <li><a href="calibration.html">Calibracion</a></li>
+                    </ul>
+                </nav>
+                <div class="sidebar-footer">
+                    <h4>Soporte: +34 600 000 000</h4>
+                    <p>Ultima sincronizacion: 04/12/2025</p>
+                    <p>Web: <a href="https://www.inter-medic.net/">Intermedic</a></p>
+                </div>
+            </aside>
+            <div class="content">
+                <header class="header">
+                    <h1>Agregar Nuevo Equipo</h1>
+                </header>
+                <main class="main-content">
+                    <section class="form-section">
+                        <form class="dform" action="#" method="post">
+                            <label for="nombre">Nombre del Equipo:</label><br>
+                            <input type="text" id="nombre" name="nombre" required><br>
+
+                            <label for="modelo">Modelo:</label><br>
+                            <input type="text" id="modelo" name="modelo" required><br>
+
+                            <label for="sn">Numero de Serie (SN):</label><br>
+                            <input type="text" id="sn" name="sn" required><br>
+
+                            <label for="ubicacion">Ubicacion:</label><br>
+                            <input type="text" id="ubicacion" name="ubicacion" required><br>
+                            <label for="fecha_compra">Fecha de Compra:</label><br>
+                            <input type="date" id="fecha_compra" name="fecha_compra" required><br>
+                            <label for="proveedor">Proveedor:</label><br>
+                            <input type="text" id="proveedor" name="proveedor" required><br>
+                            <button class="btn-general" type="submit">Agregar Equipo</button>
+                        </form>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
