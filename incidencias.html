@@ -32,7 +32,38 @@
                 <header class="header">
                     <h1>Incidencias</h1>
                     <a href="nueva_incidencia.html" class="crear-btn">Nueva Incidencia</a>
+                    <form action="#" class="dform">
+                        <input type="text" placeholder="Buscar incidencia..." name="search">
+                        <button type="submit" class="btn-general">Buscar</button>
+                    </form>
+                    <button id="btnFiltros">Filtros</button>
                 </header>
+
+                <!-- Panel de filtros -->
+                <section id="panelFiltros" class="panel-filtros hidden">
+                    <form id="filtrosForm" class="filtros-form">
+                        <select name="estado">
+                            <option value="">Estado</option>
+                            <option value="abierta">Abierta</option>
+                            <option value="proceso">En proceso</option>
+                            <option value="cerrada">Cerrada</option>
+                        </select>
+
+                        <select name="prioridad">
+                            <option value="">Prioridad</option>
+                            <option value="alta">Alta</option>
+                            <option value="media">Media</option>
+                            <option value="baja">Baja</option>
+                        </select>
+
+                        <input type="date" name="fecha">
+
+                        <button type="submit" class="btn-general">
+                            Aplicar filtros
+                        </button>
+                    </form>
+                </section>
+
                 <main class="main-content">
                     <section class="ultimas-incidencias">
                         <h2>Total Incidencias</h2>
@@ -41,6 +72,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Equipo</th>
+                                    <th>SN</th>
                                     <th>Estado</th>
                                     <th>Tecnico Asignado</th>
                                     <th>Fecha</th>
@@ -50,6 +82,7 @@
                                 <tr>
                                     <td><a href="detalle_incidencia_001.html">001</a></td>
                                     <td>Laser CO2</td>
+                                    <td>CD48512</td>
                                     <td>En progreso</td>
                                     <td>Juan Perez</td>
                                     <td>21/12/2025</td>
@@ -57,6 +90,7 @@
                                 <tr>
                                     <td><a href="detalle_incidencia_002.html">002</a></td>
                                     <td>Diodo Blue</td>
+                                    <td>DB20245</td>
                                     <td>Pendiente</td>
                                     <td>Maria Lopez</td>
                                     <td>25/12/2025</td>
@@ -64,6 +98,7 @@
                                 <tr>
                                     <td><a href="incidencias.html">003</a></td>
                                     <td>Dermalase</td>
+                                    <td>CA25894</td>
                                     <td>Completada</td>
                                     <td>Carlos Garcia</td>
                                     <td>01/01/2026</td>
@@ -71,6 +106,7 @@
                                 <tr>
                                     <td><a href="incidencias.html">004</a></td>
                                     <td>IPL Advanced</td>
+                                    <td>BH45896</td>
                                     <td>En progreso</td>
                                     <td>Ana Martinez</td>
                                     <td>03/01/2026</td>
@@ -78,6 +114,7 @@
                                 <tr>
                                     <td><a href="incidencias.html">005</a></td>
                                     <td>Radiofrecuencia X</td>
+                                    <td>CB69584</td>
                                     <td>Pendiente</td>
                                     <td>Luis Fernandez</td>
                                     <td>05/01/2026</td>
@@ -85,6 +122,7 @@
                                 <tr>
                                     <td><a href="incidencias.html">006</a></td>
                                     <td>Ultracavitacion Pro</td>
+                                    <td>EF78912</td>
                                     <td>Completada</td>
                                     <td>Sofia Ruiz</td>
                                     <td>07/01/2026</td>
@@ -92,6 +130,7 @@
                                 <tr>
                                     <td><a href="incidencias.html">007</a></td>
                                     <td>Laser CO2</td>
+                                    <td>CF65478</td>
                                     <td>En progreso</td>
                                     <td>Juan Perez</td>
                                     <td>09/01/2026</td>
@@ -99,6 +138,7 @@
                                 <tr>
                                     <td><a href="incidencias.html">008</a></td>
                                     <td>Diodo Blue</td>
+                                    <td>CD48510</td>
                                     <td>Pendiente</td>
                                     <td>Maria Lopez</td>
                                     <td>11/01/2026</td>
@@ -106,6 +146,7 @@
                                 <tr>
                                     <td><a href="incidencias.html">009</a></td>
                                     <td>Dermalase</td>
+                                    <td>BJ65478</td>
                                     <td>Completada</td>
                                     <td>Carlos Garcia</td>
                                     <td>13/01/2026</td>
@@ -113,6 +154,7 @@
                                 <tr>
                                     <td><a href="incidencias.html">010</a></td>
                                     <td>IPL Advanced</td>
+                                    <td>DB20247</td>
                                     <td>En progreso</td>
                                     <td>Ana Martinez</td>
                                     <td>15/01/2026</td>
@@ -120,6 +162,7 @@
                                 <tr>
                                     <td><a href="incidencias.html">011</a></td>
                                     <td>Radiofrecuencia X</td>
+                                    <td>BF65231</td>
                                     <td>Pendiente</td>
                                     <td>Luis Fernandez</td>
                                     <td>17/01/2026</td>
@@ -127,6 +170,7 @@
                                 <tr>
                                     <td><a href="incidencias.html">012</a></td>
                                     <td>Ultracavitacion Pro</td>
+                                    <td>CD48565</td>
                                     <td>Completada</td>
                                     <td>Sofia Ruiz</td>
                                     <td>19/01/2026</td>
@@ -137,5 +181,6 @@
                     </section>
                 </main>
             </div>
+    <script src="js/filtros.js"></script>        
     </body>
 </html>
