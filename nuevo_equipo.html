@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Servicio Tecnico</title>
+        <title>Nuevo Equipo - Service Manager</title>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
@@ -25,28 +25,33 @@
                 <div class="sidebar-footer">
                     <h4>Soporte: +34 600 000 000</h4>
                     <p>Ultima sincronizacion: 04/12/2025</p>
+                    <p>Web: <a href="https://www.inter-medic.net/">Intermedic</a></p>
                 </div>
             </aside>
             <div class="content">
                 <header class="header">
-                    <h1>Detalle de Incidencia</h1>
+                    <h1>Agregar Nuevo Equipo</h1>
                 </header>
                 <main class="main-content">
-                    <section class="ultimas-incidencias">
-                        <h2>Incidencia ID: 002</h2>
-                        <p><strong>Equipo:</strong> Diodo Blue</p>
-                        <p><strong>SN:</strong> DB20247</p>
-                        <p><strong>Estado:</strong> Pendiente</p>
-                        <p><strong>Prioridad:</strong> Media</p>
-                        <p><strong>Tecnico Asignado:</strong> Maria Lopez</p>
-                        <p><strong>Fecha de Creacion:</strong> 25/12/2025</p>
-                        <p><strong>Descripcion del Problema:</strong> El equipo no responde a los comandos y muestra un error de comunicacion.</p>
-                        <h3>Historial de Actualizaciones</h3>
-                        <ul class="historial-actualizaciones">
-                            <li>
-                                <p><strong>26/12/2025 - Maria Lopez:</strong> Incidencia registrada, pendiente de diagnostico inicial.</p>
-                            </li>
-                        </ul>
+                    <section class="form-section">
+                        <form class="dform" action="#" method="post">
+                            <label for="nombre">Nombre del Equipo:</label><br>
+                            <input type="text" id="nombre" name="nombre" required><br>
+
+                            <label for="modelo">Modelo:</label><br>
+                            <input type="text" id="modelo" name="modelo" required><br>
+
+                            <label for="sn">Numero de Serie (SN):</label><br>
+                            <input type="text" id="sn" name="sn" required><br>
+
+                            <label for="ubicacion">Ubicacion:</label><br>
+                            <input type="text" id="ubicacion" name="ubicacion" required><br>
+                            <label for="fecha_compra">Fecha de Compra:</label><br>
+                            <input type="date" id="fecha_compra" name="fecha_compra" required><br>
+                            <label for="proveedor">Proveedor:</label><br>
+                            <input type="text" id="proveedor" name="proveedor" required><br>
+                            <button class="btn-general" type="submit">Agregar Equipo</button>
+                        </form>
                     </section>
                 </main>
             </div>
