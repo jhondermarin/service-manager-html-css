@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de Mantenimientos - Service Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .calendario-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+            margin-bottom: 2rem;
+        }
+
+        .calendario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .calendario-header h2 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .mes-navegacion {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .mes-navegacion button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .mes-navegacion button:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .mes-actual {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+
+        .calendario-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .dia-semana {
+            text-align: center;
+            font-weight: 600;
+            padding: 0.5rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .dia {
+            aspect-ratio: 1;
+            border: 1px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            background: white;
+        }
+
+        .dia:hover {
+            background: #f8f9fa;
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .dia.otro-mes {
+            opacity: 0.3;
+        }
+
+        .dia.hoy {
+            background: #e3f2fd;
+            border-color: #3498db;
+            font-weight: 700;
+        }
+
+        .dia-numero {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .dia-eventos {
+            font-size: 0.65rem;
+            color: #7f8c8d;
+        }
+
+        .evento-marker {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        .evento-preventivo {
+            background: #2ecc71;
+        }
+
+        .evento-correctivo {
+            background: #e74c3c;
+        }
+
+        .evento-calibracion {
+            background: #f39c12;
+        }
+
+        .leyenda {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .leyenda-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .leyenda-marker {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .proximos-mantenimientos {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+
+        .proximos-mantenimientos h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .mantenimiento-item {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .mantenimiento-item:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+
+        .mantenimiento-item.preventivo {
+            border-left-color: #2ecc71;
+        }
+
+        .mantenimiento-item.correctivo {
+            border-left-color: #e74c3c;
+        }
+
+        .mantenimiento-fecha {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 0.25rem;
+        }
+
+        .mantenimiento-equipo {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .mantenimiento-tipo {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .mantenimiento-tipo.preventivo {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .mantenimiento-tipo.correctivo {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        @media (max-width: 768px) {
+            .calendario-grid {
+                gap: 0.25rem;
+            }
+
+            .dia {
+                padding: 0.25rem;
+            }
+
+            .dia-numero {
+                font-size: 0.75rem;
+            }
+
+            .evento-marker {
+                width: 4px;
+                height: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo-empresa">
+                <img class="logo-imagen" src="resources/logo.png" alt="Logo de la Empresa">
+            </div>
+            <nav class="lista-paginas">
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="incidencias.html">Incidencias</a></li>
+                    <li><a href="mantenimientos.html">Mantenimientos</a></li>
+                    <li><a href="equipos.html">Equipos</a></li>
+                    <li><a href="tecnicos.html">Tecnicos</a></li>
+                    <li><a href="calibration.html">Calibracion</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <h4>Soporte: +34 600 000 000</h4>
+                <p>Ultima sincronizacion: 04/12/2025</p>
+                <p>Web: <a href="https://www.inter-medic.net/">Intermedic</a></p>
+            </div>
+        </aside>
+
+        <div class="content">
+            <header class="header">
+                <h1>Calendario de Mantenimientos</h1>
+                <a href="nuevo_mantenimiento.html" class="crear-btn">Nuevo Mantenimiento</a>
+            </header>
+
+            <main class="main-content">
+                <div class="calendario-container">
+                    <div class="calendario-header">
+                        <h2>Programación de Mantenimientos</h2>
+                        <div class="mes-navegacion">
+                            <button id="mesAnterior">◀ Anterior</button>
+                            <span class="mes-actual" id="mesActual"></span>
+                            <button id="mesSiguiente">Siguiente ▶</button>
+                        </div>
+                    </div>
+
+                    <div class="calendario-grid" id="calendarioGrid"></div>
+
+                    <div class="leyenda">
+                        <div class="leyenda-item">
+                            <div class="leyenda-marker evento-preventivo"></div>
+                            <span>Mantenimiento Preventivo</span>
+                        </div>
+                        <div class="leyenda-item">
+                            <div class="leyenda-marker evento-correctivo"></div>
+                            <span>Mantenimiento Correctivo</span>
+                        </div>
+                        <div class="leyenda-item">
+                            <div class="leyenda-marker evento-calibracion"></div>
+                            <span>Calibración</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proximos-mantenimientos">
+                    <h3>Próximos Mantenimientos (7 días)</h3>
+                    <div id="proximosMantenimientos"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/calendario.js"></script>
+</body>
+</html>

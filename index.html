@@ -1,140 +1,237 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Servicio Tecnico</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="app">
-            <aside class="sidebar">
-                <div class="logo-empresa">
-                    <img class="logo-imagen" src="resources/logo.png" alt="Logo de la Empresa">
-                </div>
-                <nav class="lista-paginas">
-                    <ul>
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="incidencias.html">Incidencias</a></li>
-                        <li><a href="mantenimientos.html">Mantenimientos</a></li>
-                        <li><a href="equipos.html">Equipos</a></li>
-                        <li><a href="tecnicos.html">Tecnicos</a></li>
-                        <li><a href="calibration.html">Calibracion</a></li>
-                    </ul>
-                </nav>
-                <div class="sidebar-footer">
-                    <h4>Soporte: +34 600 000 000</h4>
-                    <p>Ultima sincronizacion: 04/12/2025</p>
-                    <p>Web: <a href="https://www.inter-medic.net/">Intermedic</a></p>
-                </div>
-            </aside>
-            <div class="content">
-                <header class="header">
-                    <h1>Dashboard de Servicio Técnico</h1>
-                </header>
-                <main class="main-content">
-                    <section class="resumen-estadisticas">
-                        <div class="estadistica">
-                            <h2>Incidencias Abiertas</h2>
-                            <p>24</p>
-                        </div>
-                        <div class="estadistica">
-                            <h2>Pendientes</h2>
-                            <p>15</p>
-                        </div>
-                        <div class="estadistica">
-                            <h2>En progreso</h2>
-                            <p>8</p>
-                        </div>
-                        <div class="estadistica">
-                            <h2>Completadas</h2>
-                            <p>120</p>
-                        </div>
-                    </section>
-                    <section class="ultimas-incidencias">
-                        <h2>Ultimas Incidencias</h2>
-                        <table class="tabla-incidencias">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Equipo</th>
-                                    <th>SN</th>
-                                    <th>Estado</th>
-                                    <th>Tecnico Asignado</th>
-                                    <th>Fecha</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><a href="detalle_incidencia_001.html">001</a></td>
-                                    <td>Laser CO2</td>
-                                    <td>CD48512</td>
-                                    <td>En progreso</td>
-                                    <td>Juan Perez</td>
-                                    <td>21/12/2025</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="detalle_incidencia_002.html">002</a></td>
-                                    <td>Diodo Blue</td>
-                                    <td>DB20247</td>
-                                    <td>Pendiente</td>
-                                    <td>Maria Lopez</td>
-                                    <td>25/12/2025</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="index.html">003</a></td>
-                                    <td>Dermalase</td>
-                                    <td>CA25894</td>
-                                    <td>Completada</td>
-                                    <td>Carlos Garcia</td>
-                                    <td>01/01/2026</td>
-                                </tr>
-                            </tbody>        
-                        </table>
-                    </section>
-                    <section class="ultimos-mantenimientos">
-                        <h2>Ultimos Mantenimientos</h2>
-                        <table class="tabla-mantenimientos">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Equipo</th>
-                                    <th>SN</th>
-                                    <th>Tipo de Mantenimiento</th>
-                                    <th>Tecnico</th>
-                                    <th>Fecha</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><a href="detalle_mantenimiento_101.html">101</a></td>
-                                    <td>Laser CO2</td>
-                                    <td>CC51054</td>
-                                    <td>Preventivo</td>
-                                    <td>Juan Perez</td>
-                                    <td>15/12/2025</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="detalle_mantenimiento_102.html">102</a></td>
-                                    <td>Diodo Blue</td>
-                                    <td>CE54354</td>
-                                    <td>Correctivo</td>
-                                    <td>Maria Lopez</td>
-                                    <td>20/12/2025</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="index.html">103</a></td>
-                                    <td>Dermalase</td>
-                                    <td>CF51154</td>
-                                    <td>Preventivo</td>
-                                    <td>Carlos Garcia</td>
-                                    <td>28/12/2025</td>
-                                </tr>
-                            </tbody>
-                    </section>
-                </main>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Service Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .chart-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        
+        .chart-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .alertas-calibracion {
+            background: #fff3cd;
+            border-left: 4px solid #f39c12;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .alertas-calibracion h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+        
+        .alerta-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ffeeba;
+        }
+        
+        .alerta-item:last-child {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 768px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo-empresa">
+                <img class="logo-imagen" src="resources/logo.png" alt="Logo de la Empresa">
             </div>
+            <nav class="lista-paginas">
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="incidencias.html">Incidencias</a></li>
+                    <li><a href="mantenimientos.html">Mantenimientos</a></li>
+                    <li><a href="equipos.html">Equipos</a></li>
+                    <li><a href="tecnicos.html">Tecnicos</a></li>
+                    <li><a href="calibration.html">Calibracion</a></li>
+                    <li><a href="calendariomant.html">Calendario</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <h4>Soporte: +34 600 000 000</h4>
+                <p>Ultima sincronizacion: <span id="fecha-sync"></span></p>
+                <p>Web: <a href="https://www.inter-medic.net/">Intermedic</a></p>
+            </div>
+        </aside>
+        
+        <div class="content">
+            <header class="header">
+                <h1>Dashboard de Servicio Técnico</h1>
+                <button class="crear-btn" onclick="location.href='nueva_incidencia.html'">Nueva Incidencia</button>
+            </header>
+            
+            <main class="main-content">
+                <!-- Alertas de Calibración -->
+                <div class="alertas-calibracion">
+                    <h3>⚠️ Alertas de Calibración</h3>
+                    <div class="alerta-item">
+                        <strong>Osciloscopio Hameg</strong> - Vence en 15 días (20/10/2026)
+                    </div>
+                    <div class="alerta-item">
+                        <strong>Analizador de Seguridad Eléctrica</strong> - Atrasado desde 05/09/2026
+                    </div>
+                </div>
+                
+                <!-- Estadísticas Rápidas -->
+                <section class="resumen-estadisticas">
+                    <div class="estadistica">
+                        <h2>Incidencias Abiertas</h2>
+                        <p id="stat-abiertas">24</p>
+                    </div>
+                    <div class="estadistica">
+                        <h2>Pendientes</h2>
+                        <p id="stat-pendientes">15</p>
+                    </div>
+                    <div class="estadistica">
+                        <h2>En progreso</h2>
+                        <p id="stat-progreso">8</p>
+                    </div>
+                    <div class="estadistica">
+                        <h2>Completadas</h2>
+                        <p id="stat-completadas">120</p>
+                    </div>
+                </section>
+                
+                <!-- Gráficos -->
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Incidencias por Estado</h3>
+                        <canvas id="chartEstados"></canvas>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3>Incidencias Mensuales</h3>
+                        <canvas id="chartMensuales"></canvas>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3>Mantenimientos por Tipo</h3>
+                        <canvas id="chartMantenimientos"></canvas>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3>Equipos por Estado</h3>
+                        <canvas id="chartEquipos"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Tablas de Últimas Incidencias y Mantenimientos -->
+                <section class="ultimas-incidencias">
+                    <h2>Últimas Incidencias</h2>
+                    <table class="tabla-incidencias">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Equipo</th>
+                                <th>SN</th>
+                                <th>Estado</th>
+                                <th>Técnico Asignado</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="detalle_incidencia_001.html">001</a></td>
+                                <td>Laser CO2</td>
+                                <td>CD48512</td>
+                                <td>En progreso</td>
+                                <td>Juan Perez</td>
+                                <td>21/12/2025</td>
+                            </tr>
+                            <tr>
+                                <td><a href="detalle_incidencia_002.html">002</a></td>
+                                <td>Diodo Blue</td>
+                                <td>DB20247</td>
+                                <td>Pendiente</td>
+                                <td>Maria Lopez</td>
+                                <td>25/12/2025</td>
+                            </tr>
+                            <tr>
+                                <td><a href="index.html">003</a></td>
+                                <td>Dermalase</td>
+                                <td>CA25894</td>
+                                <td>Completada</td>
+                                <td>Carlos Garcia</td>
+                                <td>01/01/2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <section class="ultimos-mantenimientos">
+                    <h2>Últimos Mantenimientos</h2>
+                    <table class="tabla-mantenimientos">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Equipo</th>
+                                <th>SN</th>
+                                <th>Tipo de Mantenimiento</th>
+                                <th>Técnico</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="detalle_mantenimiento_101.html">101</a></td>
+                                <td>Laser CO2</td>
+                                <td>CC51054</td>
+                                <td>Preventivo</td>
+                                <td>Juan Perez</td>
+                                <td>15/12/2025</td>
+                            </tr>
+                            <tr>
+                                <td><a href="detalle_mantenimiento_102.html">102</a></td>
+                                <td>Diodo Blue</td>
+                                <td>CE54354</td>
+                                <td>Correctivo</td>
+                                <td>Maria Lopez</td>
+                                <td>20/12/2025</td>
+                            </tr>
+                            <tr>
+                                <td><a href="index.html">103</a></td>
+                                <td>Dermalase</td>
+                                <td>CF51154</td>
+                                <td>Preventivo</td>
+                                <td>Carlos Garcia</td>
+                                <td>28/12/2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </main>
         </div>
-    </body>
+    </div>
 
+    <script src="js/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="js/notificaciones.js"></script>
+</body>
 </html>
